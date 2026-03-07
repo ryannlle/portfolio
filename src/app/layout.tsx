@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Ryan Le | AI & Machine Learning",
   description:
     "Portfolio of Ryan Le — AI researcher, machine learning engineer, and MIS student at San Diego State University.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

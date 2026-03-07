@@ -31,6 +31,18 @@ export default function About() {
           </FadeIn>
 
           <div>
+            <FadeIn delay={0.15}>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+                </span>
+                <span className="text-xs text-muted">
+                  Incoming ML Intern @ Realty Income &middot; Summer 2026
+                </span>
+              </div>
+            </FadeIn>
+
             <FadeIn delay={0.2}>
               <p className="text-lg text-muted leading-relaxed mb-6">
                 I&apos;m a junior at San Diego State University studying

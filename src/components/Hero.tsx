@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Ambient light blobs */}
+      {/* Ambient light blobs - expanded and brighter */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(96,165,250,0.12) 0%, rgba(167,139,250,0.06) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(96,165,250,0.18) 0%, rgba(167,139,250,0.1) 35%, transparent 65%)",
         }}
         animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.5, 0.9, 0.5],
+          scale: [1, 1.12, 1],
+          opacity: [0.6, 1, 0.6],
         }}
         transition={{
           duration: 6,
@@ -23,15 +23,15 @@ export default function Hero() {
         }}
       />
       <motion.div
-        className="absolute top-1/3 left-1/3 w-[350px] h-[350px] rounded-full pointer-events-none"
+        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(167,139,250,0.14) 0%, transparent 65%)",
         }}
         animate={{
-          x: [0, 40, 0],
-          y: [0, -30, 0],
-          scale: [1, 1.1, 1],
+          x: [0, 50, 0],
+          y: [0, -40, 0],
+          scale: [1, 1.15, 1],
         }}
         transition={{
           duration: 8,
@@ -40,14 +40,14 @@ export default function Hero() {
         }}
       />
       <motion.div
-        className="absolute bottom-1/3 right-1/4 w-[250px] h-[250px] rounded-full pointer-events-none"
+        className="absolute bottom-1/4 right-1/5 w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(96,165,250,0.06) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(96,165,250,0.12) 0%, transparent 65%)",
         }}
         animate={{
-          x: [0, -25, 0],
-          y: [0, 20, 0],
+          x: [0, -35, 0],
+          y: [0, 30, 0],
           scale: [1, 1.2, 1],
         }}
         transition={{
@@ -61,7 +61,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="text-sm md:text-base text-muted tracking-widest uppercase mb-6"
         >
           AI &middot; Machine Learning &middot; Data Science
@@ -70,7 +70,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
           className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter bg-clip-text text-transparent"
           style={{
             backgroundImage:
@@ -85,7 +85,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           className="text-lg md:text-xl text-muted mt-6 max-w-xl mx-auto leading-relaxed"
         >
           Building intelligent systems at the intersection of
@@ -96,7 +96,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
+          transition={{ duration: 0.6, delay: 1.1 }}
           className="mt-10 flex items-center justify-center gap-4"
         >
           <a
@@ -117,7 +117,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
