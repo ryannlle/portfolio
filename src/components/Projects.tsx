@@ -1,24 +1,21 @@
 import FadeIn from "./FadeIn";
 
 const featuredProject = {
-  title: "HPC-Eval",
-  subtitle: "LLM-generated HPC Hallucination & Performance Benchmark",
+  title: "Failures at the Seam",
+  subtitle: "A Socio-Technical Survey of LLM-Generated Code Risks",
   description:
-    "Developing a synthetically generated benchmark of HPC coding tasks spanning 4 mathematical domains (Linear Algebra, Grids & Stencils, Graph Theory, Monte Carlo) across 3 difficulty tiers. Evaluates LLM-generated C++, Julia, and Fortran code for correctness and the presence of API, syntactic, and semantic hallucinations using CodeBLEU, TSED, Pass@K, and runtime performance across 4\u201332 CPU threads.",
+    "A six-author survey, submitted to HICSS, that maps the failure modes of LLM-generated code onto Socio-Technical Systems theory: inherent model limitations, the human behaviors that trigger them, and the technical and societal consequences that follow. I led the technical consequences section, covering bugs, API misuse, package hallucination and slopsquatting, insecure code, and performance issues, drawn from peer-reviewed work across ACM, IEEE, USENIX, and AAAI venues.",
   tags: [
-    "Python",
+    "Technical Writing",
     "LLMs",
-    "C++",
-    "Julia",
-    "Fortran",
-    "HPC",
-    "Parallel Programming",
-    "Benchmark Design",
-    "Scientific Writing",
+    "Literature Review",
+    "Socio-Technical Systems",
+    "Secure Code",
+    "Research",
   ],
   link: null,
-  period: "Jan 2026 \u2014 Present",
-  association: "SDSU Research Foundation",
+  period: "2026",
+  association: "San Diego State University",
 };
 
 const projects = [
@@ -174,7 +171,7 @@ export default function Projects() {
               <div className="flex items-start justify-between mb-1">
                 <div className="flex items-center gap-3">
                   <span className="text-xs px-2.5 py-0.5 rounded-full bg-accent/10 text-accent font-medium">
-                    Current Research
+                    Research Paper
                   </span>
                   <span className="text-xs text-muted">
                     {featuredProject.period}
