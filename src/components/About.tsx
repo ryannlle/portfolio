@@ -38,40 +38,45 @@ export default function About() {
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
                 </span>
                 <span className="text-xs text-muted">
-                  Incoming ML Intern @ Realty Income &middot; Summer 2026
+                  AI4Business Research Assistant @ SDSU Research Foundation
                 </span>
               </div>
             </FadeIn>
 
             <FadeIn delay={0.2}>
               <p className="text-lg text-muted leading-relaxed mb-6">
-                I&apos;m a junior at San Diego State University studying
-                Management Information Systems with a minor in Computer Science.
-                My work spans artificial intelligence, machine learning, and
-                data-driven systems&mdash;from training neural networks and
-                computer vision models to building time series forecasting
-                pipelines and multi-agent LLM frameworks.
+                I&apos;m a senior at San Diego State University studying
+                Management Information Systems with a minor in Computer Science,
+                graduating in May 2027. My work sits between machine learning and
+                applied research: training neural networks and computer vision
+                models, building time series forecasting pipelines, and
+                developing multi-agent LLM frameworks.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.3}>
               <p className="text-lg text-muted leading-relaxed mb-6">
-                Currently, I serve as an AI4Business Research Assistant at the
-                SDSU Research Foundation, where I contribute to research on LLM
-                hallucination detection and HPC benchmark development. This
-                summer, I&apos;ll be joining{" "}
+                I work as an undergraduate research assistant, teaching
+                assistant, and lab coordinator with the AI4Business group at the
+                SDSU Research Foundation, studying the risks in LLM-generated
+                code and helping build HPC benchmarks. Over summer 2026 I was an
+                Applied Machine Learning Intern at{" "}
                 <span className="text-foreground font-medium">
                   Realty Income
-                </span>{" "}
-                as an Applied Machine Learning Intern.
+                </span>
+                , where I built a market-sentiment scoring pipeline for
+                commercial real estate and helped shape an investment thesis
+                presented to company leadership.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.4}>
               <p className="text-lg text-muted leading-relaxed mb-10">
-                I thrive in collaborative, leadership-oriented environments and
-                bring a distinct blend of business acumen and technical depth to
-                every project I take on.
+                That research became a co-authored paper, &ldquo;Failures at the
+                Seam,&rdquo; submitted to HICSS. Outside coursework I&apos;m
+                secretary of AI For All, a new student organization at SDSU, and
+                mentor with the Asian Pacific Student Alliance and Asian Business
+                Association.
               </p>
             </FadeIn>
 
