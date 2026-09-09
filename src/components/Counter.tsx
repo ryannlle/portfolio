@@ -21,25 +21,27 @@ export default function Counter({
   commas = false,
 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  // Start at the final value so the number is correct on first paint and even
+  // if the in-view animation never fires (e.g. observer misses a fast scroll).
+  const [count, setCount] = useState(target);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || hasAnimated.current) return;
+    hasAnimated.current = true;
 
-    const totalFrames = duration * 60;
-    const increment = target / totalFrames;
-    let current = 0;
+    const totalFrames = Math.round(duration * 60);
     let frame = 0;
+    setCount(0);
 
     const timer = setInterval(() => {
       frame++;
-      current += increment;
       if (frame >= totalFrames) {
         setCount(target);
         clearInterval(timer);
       } else {
-        setCount(current);
+        setCount((target / totalFrames) * frame);
       }
     }, 1000 / 60);
 
