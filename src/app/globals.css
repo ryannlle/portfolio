@@ -2,6 +2,7 @@
 
 @theme inline {
   --color-background: #000000;
+  --color-panel: #08090b;
   --color-foreground: #f5f6f7;
   --color-muted: #9aa1ab;
   --color-accent: #9db8cf;
@@ -13,6 +14,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* fixed navbar is 64px; keep anchored headings clear of it */
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -28,6 +31,7 @@ body {
 
 /* Brushed-metal text: white sheen falling to steel and back. */
 .text-chrome {
+  color: #eef2f6; /* fallback if background-clip:text is unsupported */
   background-image: linear-gradient(
     177deg,
     #ffffff 0%,
@@ -37,7 +41,14 @@ body {
   );
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (forced-colors: active) {
+  .text-chrome {
+    -webkit-text-fill-color: CanvasText;
+    color: CanvasText;
+  }
 }
 
 @keyframes gradient-shift {
