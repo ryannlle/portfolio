@@ -12,13 +12,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://ryanle.vercel.app";
+const siteTitle = "Ryan Le | AI & Machine Learning";
+const siteDescription =
+  "Portfolio of Ryan Le, a machine learning and applied research student at San Diego State University who builds decision engines and forecasting pipelines for non-technical teams.";
+
 export const metadata: Metadata = {
-  title: "Ryan Le | AI & Machine Learning",
-  description:
-    "Portfolio of Ryan Le — AI researcher, machine learning engineer, and MIS student at San Diego State University.",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Ryan Le",
+    title: siteTitle,
+    description: siteDescription,
+    images: [{ url: "/headshot.png", width: 1024, height: 682, alt: "Ryan Le" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/headshot.png"],
   },
 };
 
