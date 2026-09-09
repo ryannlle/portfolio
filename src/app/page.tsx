@@ -16,8 +16,8 @@ export default function Home() {
       <About />
       <Experience />
       <Projects />
-      <Certifications />
       <Skills />
+      <Certifications />
       <Contact />
     </PageTransition>
   );
