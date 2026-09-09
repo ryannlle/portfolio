@@ -1,6 +1,16 @@
 import FadeIn from "./FadeIn";
+import SectionHeading from "./SectionHeading";
 
-const experiences = [
+type Experience = {
+  role: string;
+  company: string;
+  period: string;
+  type: string;
+  description: string[];
+  link?: string;
+};
+
+const experiences: Experience[] = [
   {
     role: "AI4Business Research Assistant, Teaching Assistant & Lab Coordinator",
     company: "SDSU Research Foundation",
@@ -16,8 +26,9 @@ const experiences = [
   {
     role: "Secretary",
     company: "AI For All, San Diego State University",
-    period: "2026 — Present",
+    period: "August 2026 — Present",
     type: "",
+    link: "https://www.linkedin.com/company/sdsuaiforall/",
     description: [],
   },
   {
@@ -48,30 +59,49 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-sm text-accent tracking-widest uppercase mb-4">
-            Experience
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-16">
-            Where I&apos;ve worked.
-          </h2>
-        </FadeIn>
+        <SectionHeading label="Experience" title="Where I've worked." />
 
         <div className="space-y-0">
           {experiences.map((exp, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div className="group grid md:grid-cols-[200px_1fr] gap-4 md:gap-12 py-10 border-b border-white/5 first:pt-0 last:border-b-0">
+              <div className="group grid md:grid-cols-[200px_1fr] gap-4 md:gap-12 py-10 border-b border-white/5 first:pt-0 last:border-b-0 transition-colors duration-300 hover:border-white/15">
                 <div className="text-sm text-muted">
                   <p>{exp.period}</p>
                   {exp.type && (
-                    <span className="inline-block mt-2 px-2.5 py-0.5 text-xs font-medium rounded-full bg-accent/10 text-accent">
+                    <span className="inline-block mt-2 px-2.5 py-0.5 text-xs font-medium rounded-full border border-accent/25 text-accent">
                       {exp.type}
                     </span>
                   )}
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">{exp.role}</h3>
-                  <p className="text-muted mt-1">{exp.company}</p>
+                  <h3 className="text-xl font-semibold tracking-tight">
+                    {exp.role}
+                  </h3>
+                  {exp.link ? (
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-flex items-center gap-1.5 text-muted transition-colors hover:text-foreground"
+                    >
+                      {exp.company}
+                      <svg
+                        className="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                        />
+                      </svg>
+                    </a>
+                  ) : (
+                    <p className="text-muted mt-1">{exp.company}</p>
+                  )}
                   {exp.description.length > 0 && (
                     <ul className="mt-4 space-y-2">
                       {exp.description.map((item, j) => (
