@@ -1,13 +1,23 @@
 import FadeIn from "./FadeIn";
+import SectionHeading from "./SectionHeading";
 
-const certifications = [
+type Certification = {
+  title: string;
+  issuer: string;
+  issued: string;
+  expires?: string;
+  credentialUrl?: string;
+  skills: string[];
+};
+
+const certifications: Certification[] = [
   {
     title: "Google Cloud Data Analytics Certificate",
     issuer: "Google Cloud",
     issued: "March 2026",
     expires: "March 2029",
     credentialUrl:
-      "https://www.credly.com/badges/google-cloud-data-analytics",
+      "https://www.credly.com/badges/31cd534e-9220-4e9e-a350-3b5e802a3584/public_url",
     skills: [
       "BigQuery",
       "Cloud Computing",
@@ -17,6 +27,20 @@ const certifications = [
       "Data Modeling",
       "Data Transformation",
       "Google Cloud",
+    ],
+  },
+  {
+    title: "Google Cloud Computing Foundations Certificate",
+    issuer: "Google",
+    issued: "May 2026",
+    credentialUrl:
+      "https://www.credly.com/badges/16048188-0270-4df8-b753-6936b1b7a3f4",
+    skills: [
+      "Network Security",
+      "Machine Learning",
+      "Google Cloud",
+      "Cloud Computing",
+      "Cloud Infrastructure",
     ],
   },
 ];
@@ -43,23 +67,20 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-sm text-accent tracking-widest uppercase mb-4">
-            Certifications
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-16">
-            Credentials.
-          </h2>
-        </FadeIn>
+        <SectionHeading label="Certifications" title="Credentials." />
 
-        <div className="space-y-6">
+        <div className="space-y-5">
           {certifications.map((cert, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div className="group relative rounded-2xl">
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-accent/0 via-purple-500/0 to-accent/0 group-hover:from-accent/30 group-hover:via-purple-500/15 group-hover:to-accent/5 transition-all duration-500 blur-sm" />
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-accent/0 via-purple-500/0 to-accent/0 group-hover:from-accent/15 group-hover:via-purple-500/10 group-hover:to-transparent transition-all duration-500" />
-
-                <div className="relative rounded-2xl bg-card p-6 md:p-8 border border-card-border group-hover:border-white/10 transition-colors duration-300">
+              <div className="group relative rounded-2xl transition-transform duration-500 ease-out hover:-translate-y-1">
+                <div
+                  className="pointer-events-none absolute -inset-6 rounded-[2rem] opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "radial-gradient(60% 55% at 50% 0%, rgba(150,210,255,0.10) 0%, transparent 70%)",
+                  }}
+                />
+                <div className="relative rounded-2xl bg-card p-6 md:p-8 border border-card-border transition-colors duration-300 group-hover:border-white/20">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-3 mb-2">
@@ -77,14 +98,15 @@ export default function Certifications() {
                             className="text-accent"
                           />
                         </svg>
-                        <h3 className="text-xl font-semibold">{cert.title}</h3>
+                        <h3 className="text-xl font-semibold tracking-tight">
+                          {cert.title}
+                        </h3>
                       </div>
                       <p className="text-muted text-sm ml-9">
                         Issued by{" "}
-                        <span className="text-foreground/80">
-                          {cert.issuer}
-                        </span>{" "}
-                        &middot; {cert.issued} &middot; Expires {cert.expires}
+                        <span className="text-foreground/80">{cert.issuer}</span>{" "}
+                        &middot; {cert.issued}
+                        {cert.expires && <> &middot; Expires {cert.expires}</>}
                       </p>
                     </div>
 
