@@ -33,10 +33,6 @@ export default function About() {
           <div>
             <FadeIn delay={0.15}>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
-                </span>
                 <span className="text-xs text-muted">
                   AI4Business Research Assistant @ SDSU Research Foundation
                 </span>
@@ -48,9 +44,13 @@ export default function About() {
                 I&apos;m a senior at San Diego State University studying
                 Management Information Systems with a minor in Computer Science,
                 graduating in May 2027. My work sits between machine learning and
-                applied research: training neural networks and computer vision
-                models, building time series forecasting pipelines, and
-                developing multi-agent LLM frameworks.
+                the teams that rely on it: I train neural networks and natural
+                language processing decision engines and build time series
+                forecasting pipelines, all with a focus on real-world
+                applicability. I work like a forward-deployed engineer, turning
+                technical systems into something a non-technical audience can act
+                on and partnering with them to define requirements and
+                architecture.
               </p>
             </FadeIn>
 
