@@ -1,17 +1,11 @@
 import FadeIn from "./FadeIn";
+import Section from "./Section";
 import SectionHeading from "./SectionHeading";
 
 const skillCategories = [
   {
     title: "Languages",
-    skills: [
-      "Python",
-      "Java",
-      "C++",
-      "SQL",
-      "HTML/CSS",
-      "DAX",
-    ],
+    skills: ["Python", "Java", "C++", "SQL", "HTML/CSS", "DAX"],
   },
   {
     title: "AI & Machine Learning",
@@ -32,8 +26,6 @@ const skillCategories = [
     skills: [
       "Pandas",
       "NumPy",
-      "Data Transformation",
-      "Data Processing",
       "Data Visualization",
       "Data Modeling",
       "Geospatial Analysis",
@@ -57,7 +49,6 @@ const skillCategories = [
       "Microsoft Fabric",
       "Google Cloud",
       "BigQuery",
-      "SQLiteStudio",
       "Django",
       "Flask",
     ],
@@ -66,30 +57,28 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionHeading label="Skills" title="Tools of the trade." />
+    <Section id="skills" size="sm" divider>
+      <SectionHeading label="Skills" title="Tools of the trade." />
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {skillCategories.map((cat, i) => (
-            <FadeIn key={cat.title} delay={i * 0.1}>
-              <h3 className="text-sm font-medium text-muted uppercase tracking-wider mb-4">
-                {cat.title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3.5 py-1.5 text-sm rounded-full border border-white/10 text-foreground/80 hover:border-accent/30 hover:text-foreground transition-colors duration-200"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </FadeIn>
-          ))}
-        </div>
+      <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        {skillCategories.map((cat, i) => (
+          <FadeIn key={cat.title} delay={i * 0.06}>
+            <h3 className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-muted">
+              {cat.title}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {cat.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full border border-white/10 px-3 py-1.5 text-sm text-foreground/80"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </FadeIn>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
