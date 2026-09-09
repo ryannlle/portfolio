@@ -23,6 +23,26 @@ const featuredProject = {
 
 const projects = [
   {
+    title: "Market Sentiment Analysis",
+    subtitle: "Tenant & Location Scoring Engine for Commercial Real Estate",
+    description:
+      "A decision engine that grades commercial real estate tenants and properties on a 0 to 100 scale, split into a tenant financial-health sub-score and a location economic-health sub-score with a confidence rating for data completeness. It draws on SEC EDGAR filings, FRED, Census ACS, yfinance, and local news RSS, and scores filing and news sentiment with FinBERT in batched inference on Databricks. A trade-area mode evaluates a property's full economic catchment using an equal-area geospatial buffer and spatial SQL. Query tuning (column pruning, restoring Parquet predicate pushdown, and session caching) cut a single evaluation from about 15 minutes to under a minute over a 44GB, ~837K-row offline store, with every run logged to MLflow.",
+    tags: [
+      "Python",
+      "Databricks",
+      "FinBERT",
+      "Hugging Face",
+      "PyTorch",
+      "MLflow",
+      "Pandas",
+      "Geospatial Analysis",
+      "Pydantic",
+      "NLP",
+    ],
+    link: null,
+    period: "Jun — Aug 2026",
+  },
+  {
     title: "Malicious URL Detection",
     subtitle: "Feed-Forward Neural Network Classifier",
     description:
