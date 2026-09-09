@@ -1,127 +1,119 @@
 import FadeIn from "./FadeIn";
+import Card from "./Card";
+import Section from "./Section";
 import SectionHeading from "./SectionHeading";
 
-const featuredProject = {
-  title: "Failures at the Seam",
-  subtitle: "A Socio-Technical Survey of LLM-Generated Code Risks",
-  description:
-    "A six-author survey, submitted to HICSS, that maps the failure modes of LLM-generated code onto Socio-Technical Systems theory: inherent model limitations, the human behaviors that trigger them, and the technical and societal consequences that follow. I led the technical consequences section, covering bugs, API misuse, package hallucination and slopsquatting, insecure code, and performance issues, drawn from peer-reviewed work across ACM, IEEE, USENIX, and AAAI venues.",
-  tags: [
-    "Technical Writing",
-    "LLMs",
-    "Literature Review",
-    "Socio-Technical Systems",
-    "Secure Code",
-    "Research",
-  ],
-  link: null,
-  period: "2026",
-  association: "San Diego State University",
+type Metric = { value: string; label: string };
+type Cta = { label: string; href: string };
+
+type Project = {
+  title: string;
+  subtitle: string;
+  description: string;
+  tags: string[];
+  period: string;
+  org?: string;
+  orgUrl?: string;
+  repo?: string;
+  cta?: Cta;
+  metrics?: Metric[];
 };
 
-const projects = [
+const featuredProject: Project = {
+  title: "Market Sentiment Analysis",
+  subtitle: "Tenant & Location Scoring Engine for Commercial Real Estate",
+  description:
+    "A decision engine that grades commercial real estate tenants and properties on a 0 to 100 scale, split into a tenant financial-health sub-score and a location economic-health sub-score with a confidence rating for data completeness. It draws on SEC EDGAR, FRED, Census ACS, yfinance, and local news RSS, and scores filing and news sentiment with FinBERT in batched inference on Databricks. A trade-area mode evaluates a property's full economic catchment with an equal-area geospatial buffer and spatial SQL. Query tuning (column pruning, restoring Parquet predicate pushdown, session caching) cut a single evaluation from about 15 minutes to under a minute over a 44GB, ~837K-row offline store.",
+  tags: [
+    "Python",
+    "Databricks",
+    "FinBERT",
+    "MLflow",
+    "Geospatial Analysis",
+    "NLP",
+  ],
+  period: "Jun — Aug 2026",
+  org: "Realty Income",
+  orgUrl: "https://www.realtyincome.com/",
+  metrics: [
+    { value: "0–100", label: "composite score" },
+    { value: "15m → <60s", label: "per evaluation" },
+    { value: "837K", label: "rows · 44GB store" },
+    { value: "MLflow", label: "every run logged" },
+  ],
+};
+
+const projects: Project[] = [
   {
-    title: "Market Sentiment Analysis",
-    subtitle: "Tenant & Location Scoring Engine for Commercial Real Estate",
+    title: "Failures at the Seam",
+    subtitle: "A Socio-Technical Survey of LLM-Generated Code Risks",
     description:
-      "A decision engine that grades commercial real estate tenants and properties on a 0 to 100 scale, split into a tenant financial-health sub-score and a location economic-health sub-score with a confidence rating for data completeness. It draws on SEC EDGAR filings, FRED, Census ACS, yfinance, and local news RSS, and scores filing and news sentiment with FinBERT in batched inference on Databricks. A trade-area mode evaluates a property's full economic catchment using an equal-area geospatial buffer and spatial SQL. Query tuning (column pruning, restoring Parquet predicate pushdown, and session caching) cut a single evaluation from about 15 minutes to under a minute over a 44GB, ~837K-row offline store, with every run logged to MLflow.",
+      "A six-author survey, submitted to HICSS, that maps the failure modes of LLM-generated code onto Socio-Technical Systems theory: inherent model limitations, the human behaviors that trigger them, and the technical and societal consequences that follow. I led the technical consequences section, covering bugs, API misuse, package hallucination and slopsquatting, insecure code, and performance issues, drawn from peer-reviewed work across ACM, IEEE, USENIX, and AAAI venues.",
     tags: [
-      "Python",
-      "Databricks",
-      "FinBERT",
-      "Hugging Face",
-      "PyTorch",
-      "MLflow",
-      "Pandas",
-      "Geospatial Analysis",
-      "Pydantic",
-      "NLP",
+      "Technical Writing",
+      "LLMs",
+      "Socio-Technical Systems",
+      "Secure Code",
+      "Research",
     ],
-    link: null,
-    period: "Jun — Aug 2026",
+    period: "2026",
+    org: "AI4Business, SDSU",
+    orgUrl: "https://business.sdsu.edu/centers-institutes/ai4business",
+    cta: {
+      label: "Request the draft",
+      href: "mailto:ryankle71@gmail.com?subject=Failures%20at%20the%20Seam%20%E2%80%94%20draft%20request",
+    },
   },
   {
     title: "Malicious URL Detection",
     subtitle: "Feed-Forward Neural Network Classifier",
     description:
       "An MLP neural network achieving 0.92 weighted F1-score on 128,224 URLs for 4-class classification, built with a full preprocessing pipeline using Shannon entropy, lexical features, and structural URL analysis.",
-    tags: [
-      "Python",
-      "Neural Networks",
-      "scikit-learn",
-      "Pandas",
-      "NumPy",
-      "Feature Engineering",
-      "Matplotlib",
-    ],
-    link: "https://github.com/ryannlle/MaliciousUrlDetection",
-    period: "Aug \u2014 Dec 2025",
+    tags: ["Python", "Neural Networks", "scikit-learn", "Feature Engineering", "Pandas"],
+    period: "Aug — Dec 2025",
+    repo: "https://github.com/ryannlle/MaliciousUrlDetection",
   },
   {
     title: "Benefit Hours Forecasting",
     subtitle: "SARIMAX Time Series for SWCA",
     description:
       "SARIMAX forecasting models processing 3.5M+ employee records to predict benefit hours across demographics, delivered via interactive Power BI dashboards to C-suite leadership for financial and workforce planning.",
-    tags: [
-      "Python",
-      "SARIMAX",
-      "Power BI",
-      "Microsoft Fabric",
-      "Pandas",
-      "DAX",
-      "Data Pipelines",
-    ],
-    link: null,
-    period: "Jun \u2014 Aug 2025",
+    tags: ["Python", "SARIMAX", "Power BI", "Microsoft Fabric", "Data Pipelines"],
+    period: "Jun — Aug 2025",
+    org: "SWCA",
+    orgUrl: "https://www.swca.com/",
   },
   {
     title: "Basketball AI Assistant",
     subtitle: "Computer Vision for SDSU Athletics",
     description:
-      "A YOLOv8 model trained on 2,000 labeled image pairs for player detection and pose estimation, enabling dribble counting and in-game event recognition for SDSU Men\u2019s Basketball.",
-    tags: [
-      "Python",
-      "YOLOv8",
-      "PyTorch",
-      "Computer Vision",
-      "Pose Estimation",
-      "OpenCV",
-    ],
-    link: null,
-    period: "Mar \u2014 Jul 2025",
+      "A YOLOv8 model trained on 2,000 labeled image pairs for player detection and pose estimation, enabling dribble counting and in-game event recognition for SDSU Men’s Basketball.",
+    tags: ["Python", "YOLOv8", "PyTorch", "Computer Vision", "Pose Estimation"],
+    period: "Mar — Jul 2025",
   },
   {
     title: "Movie Rental Dashboard",
     subtitle: "Full-Stack Database & Reporting App",
     description:
       "An 11-entity relational database with a Flask web application for dynamic reporting, featuring 20+ optimized SQL queries and Jinja2 templates for interactive business insights.",
-    tags: [
-      "Python",
-      "Flask",
-      "SQLite",
-      "SQL",
-      "HTML/CSS",
-      "Jinja2",
-      "REST API",
-      "ER Modeling",
-    ],
-    link: "https://github.com/ryannlle/ReportingDashboard",
-    period: "Aug \u2014 Dec 2024",
+    tags: ["Python", "Flask", "SQL", "SQLite", "ER Modeling"],
+    period: "Aug — Dec 2024",
+    repo: "https://github.com/ryannlle/ReportingDashboard",
   },
 ];
 
 function GitHubIcon() {
   return (
-    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
     </svg>
   );
 }
 
-function ArrowIcon() {
+function ExternalGlyph({ className = "h-3.5 w-3.5" }: { className?: string }) {
   return (
     <svg
-      className="w-4 h-4"
+      className={className}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -130,138 +122,149 @@ function ArrowIcon() {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
       />
     </svg>
   );
 }
 
-function GlowCard({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+function OrgLink({ org, orgUrl }: { org: string; orgUrl?: string }) {
+  if (!orgUrl) return <span className="text-xs text-muted">{org}</span>;
   return (
-    <div
-      className={`group relative rounded-2xl transition-transform duration-500 ease-out hover:-translate-y-1 ${className}`}
+    <a
+      href={orgUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1 text-xs text-muted transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
     >
-      {/* cool halo, only on hover */}
-      <div
-        className="pointer-events-none absolute -inset-6 rounded-[2rem] opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(60% 55% at 50% 0%, rgba(150,210,255,0.10) 0%, transparent 70%)",
-        }}
-      />
-      {/* top sheen */}
-      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.07] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      {children}
+      {org}
+      <ExternalGlyph className="h-3 w-3" />
+    </a>
+  );
+}
+
+function TagRow({ tags }: { tags: string[] }) {
+  return (
+    <div className="mt-6 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className="rounded-full bg-white/[0.04] px-2.5 py-1 text-xs text-muted"
+        >
+          {tag}
+        </span>
+      ))}
     </div>
   );
 }
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionHeading label="Projects" title="What I've built." />
+    <Section id="projects" size="lg" panel divider>
+      <SectionHeading label="Projects" title="What I've built." />
 
-        {/* Featured project */}
-        <FadeIn>
-          <GlowCard className="mb-5">
-            <div className="relative rounded-2xl bg-card p-8 border border-card-border group-hover:border-white/20 transition-colors duration-300">
-              <div className="flex items-start justify-between mb-1">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs px-2.5 py-0.5 rounded-full border border-accent/25 text-accent font-medium">
-                    Research Paper
-                  </span>
-                  <span className="text-xs text-muted">
-                    {featuredProject.period}
-                  </span>
-                </div>
-                <span className="text-xs text-muted">
-                  {featuredProject.association}
-                </span>
-              </div>
+      {/* Featured */}
+      <FadeIn>
+        <Card className="mb-5 p-8">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="rounded-full border border-accent/25 px-2.5 py-0.5 text-xs font-medium text-accent">
+              Flagship
+            </span>
+            <span className="text-xs text-muted">{featuredProject.period}</span>
+            {featuredProject.org && (
+              <>
+                <span className="text-xs text-white/20">·</span>
+                <OrgLink
+                  org={featuredProject.org}
+                  orgUrl={featuredProject.orgUrl}
+                />
+              </>
+            )}
+          </div>
 
-              <div className="mt-5 md:grid md:grid-cols-[1fr_auto] md:gap-12 md:items-start">
-                <div>
-                  <h3 className="text-chrome text-2xl font-semibold mb-1">
-                    {featuredProject.title}
-                  </h3>
-                  <p className="text-sm text-accent/80 mb-4">
-                    {featuredProject.subtitle}
-                  </p>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {featuredProject.description}
-                  </p>
-                </div>
-              </div>
+          <div className="grid gap-8 md:grid-cols-[1fr_240px] md:gap-12">
+            <div>
+              <h3 className="text-chrome text-2xl font-semibold">
+                {featuredProject.title}
+              </h3>
+              <p className="mb-4 mt-1 text-sm text-accent/80">
+                {featuredProject.subtitle}
+              </p>
+              <p className="text-sm leading-relaxed text-muted">
+                {featuredProject.description}
+              </p>
+              <TagRow tags={featuredProject.tags} />
+            </div>
 
-              <div className="flex flex-wrap gap-2 mt-6">
-                {featuredProject.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-2.5 py-1 rounded-full border border-white/10 text-muted"
-                  >
-                    {tag}
-                  </span>
+            {featuredProject.metrics && (
+              <div className="grid grid-cols-2 gap-x-6 gap-y-6 self-start rounded-xl border border-white/10 bg-white/[0.02] p-5 md:grid-cols-1">
+                {featuredProject.metrics.map((m) => (
+                  <div key={m.label}>
+                    <p className="text-chrome text-lg font-semibold tabular-nums">
+                      {m.value}
+                    </p>
+                    <p className="mt-0.5 text-xs text-muted">{m.label}</p>
+                  </div>
                 ))}
               </div>
-            </div>
-          </GlowCard>
-        </FadeIn>
+            )}
+          </div>
+        </Card>
+      </FadeIn>
 
-        {/* Project grid */}
-        <div className="grid md:grid-cols-2 gap-5">
-          {projects.map((project, i) => (
-            <FadeIn key={i} delay={i * 0.08}>
-              <GlowCard className="h-full">
-                <div className="relative h-full flex flex-col rounded-2xl bg-card p-6 border border-card-border group-hover:border-white/20 transition-colors duration-300">
-                  <div className="flex items-start justify-between mb-4">
-                    <p className="text-xs text-muted">{project.period}</p>
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-xs text-muted hover:text-foreground transition-colors"
-                        aria-label={`View ${project.title} on GitHub`}
-                      >
-                        <GitHubIcon />
-                        <ArrowIcon />
-                      </a>
-                    )}
-                  </div>
-
-                  <h3 className="text-lg font-semibold mb-1">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-accent/80 mb-3">
-                    {project.subtitle}
-                  </p>
-                  <p className="text-sm text-muted leading-relaxed mb-5 flex-1">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2.5 py-1 rounded-full border border-white/10 text-muted"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+      {/* Grid */}
+      <div className="grid gap-5 md:grid-cols-2">
+        {projects.map((project, i) => (
+          <FadeIn key={i} delay={i * 0.05}>
+            <Card className="p-6">
+              <div className="mb-4 flex items-start justify-between gap-4">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span className="text-xs text-muted">{project.period}</span>
+                  {project.org && (
+                    <>
+                      <span className="text-xs text-white/20">·</span>
+                      <OrgLink org={project.org} orgUrl={project.orgUrl} />
+                    </>
+                  )}
                 </div>
-              </GlowCard>
-            </FadeIn>
-          ))}
-        </div>
+                {project.repo && (
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex shrink-0 items-center gap-1.5 text-xs text-muted transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+                    aria-label={`View ${project.title} on GitHub`}
+                  >
+                    <GitHubIcon />
+                  </a>
+                )}
+              </div>
+
+              <h3 className="text-lg font-semibold tracking-tight">
+                {project.title}
+              </h3>
+              <p className="mb-3 mt-1 text-sm text-accent/80">
+                {project.subtitle}
+              </p>
+              <p className="flex-1 text-sm leading-relaxed text-muted">
+                {project.description}
+              </p>
+
+              <TagRow tags={project.tags} />
+
+              {project.cta && (
+                <a
+                  href={project.cta.href}
+                  className="mt-5 inline-flex items-center gap-1.5 self-start text-sm text-accent transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+                >
+                  {project.cta.label}
+                  <span aria-hidden>&rarr;</span>
+                </a>
+              )}
+            </Card>
+          </FadeIn>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
