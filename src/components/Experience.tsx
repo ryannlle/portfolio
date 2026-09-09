@@ -4,16 +4,21 @@ const experiences = [
   {
     role: "Applied Machine Learning Intern",
     company: "Realty Income",
-    period: "Summer 2026",
-    type: "Incoming",
-    description: [],
+    period: "June — August 2026",
+    type: "",
+    description: [
+      "Built a cross-functional view of Realty Income's triple-net lease model and used it to score and pitch an acquisition, weighing business risk, location risk, and fungibility to produce a risk-adjusted, asset-level IRR.",
+      "Identified electrical equipment manufacturing as a sale-leaseback investment thesis, backed by supply chain and data-center demand analysis, and presented it to company leadership.",
+      "Worked across the Predictive Analytics, Private Fund, and Portfolio Management teams to define the scoring methodology, feature variables, and deployment architecture for a new tenant and property risk assessment tool.",
+    ],
   },
   {
-    role: "AI4Business Research Assistant & Lab Coordinator",
+    role: "AI4Business Research Assistant, Teaching Assistant & Lab Coordinator",
     company: "SDSU Research Foundation",
     period: "January 2026 — Present",
     type: "Current",
     description: [
+      "Co-authored “Failures at the Seam,” a socio-technical survey of LLM-generated code risks submitted to HICSS, writing the section on technical failure modes: bugs, API misuse, security and licensing risk, performance issues, and slopsquatting, drawn from peer-reviewed literature.",
       "Contributing to AgentCode and HPC-Eval, multi-agent LLM frameworks for detecting hallucinations in AI-generated code and benchmarking HPC coding tasks.",
       "Supporting lab operations through research paper reviews, sponsor outreach, conducting interviews, and drafting monthly newsletters.",
       "Grading and preparing course materials for 36 students across 2 sections of MIS515.",
