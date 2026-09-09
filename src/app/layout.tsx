@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import CursorGlow from "@/components/CursorGlow";
+import SocialRail from "@/components/SocialRail";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,23 +23,19 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: siteTitle,
   description: siteDescription,
-  icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
-  },
+  // favicon + apple-touch icon come from src/app/icon.png and src/app/apple-icon.png
+  // OG + Twitter image come from src/app/opengraph-image.tsx
   openGraph: {
     type: "website",
     url: siteUrl,
     siteName: "Ryan Le",
     title: siteTitle,
     description: siteDescription,
-    images: [{ url: "/headshot.png", width: 1024, height: 682, alt: "Ryan Le" }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/headshot.png"],
   },
 };
 
@@ -53,6 +50,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <CursorGlow />
+        <SocialRail />
         <div className="relative z-10">{children}</div>
       </body>
     </html>
