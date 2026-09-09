@@ -1,106 +1,109 @@
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 import Counter from "./Counter";
+import Section from "./Section";
 import SectionHeading from "./SectionHeading";
+
+const glance = [
+  { k: "Role", v: "AI4Business Research Assistant, SDSU" },
+  { k: "Focus", v: "Applied ML & decision systems" },
+  { k: "Based in", v: "San Diego & Irvine, CA (PT)" },
+  { k: "Graduating", v: "May 2027" },
+  { k: "Open to", v: "Summer 2027 roles" },
+  { k: "Community", v: "AI For All (Secretary), APSA & ABA mentor" },
+];
+
+const stats = [
+  { value: 3.8, decimals: 1, label: "GPA" },
+  { value: 2, decimals: 0, label: "Internships" },
+  { value: 1, decimals: 0, label: "Paper (HICSS)" },
+  { value: 5, decimals: 0, label: "Projects" },
+];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionHeading label="About" title="A bit about me." />
+    <Section id="about" size="md" panel>
+      <SectionHeading label="About" title="A bit about me." />
 
-        <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-16 items-start">
-          <FadeIn delay={0.1}>
-            <div className="relative aspect-square w-full max-w-xs mx-auto md:mx-0">
+      <div className="grid gap-12 md:grid-cols-[300px_1fr] md:gap-16">
+        <div className="md:sticky md:top-28 md:self-start">
+          <FadeIn delay={0.05}>
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[300px] md:mx-0">
               <div
+                aria-hidden
                 className="absolute -inset-3 rounded-[1.25rem] blur-2xl"
                 style={{
                   background:
-                    "radial-gradient(circle at 30% 20%, rgba(150,210,255,0.25), rgba(232,180,255,0.12) 45%, transparent 75%)",
+                    "radial-gradient(circle at 30% 15%, rgba(150,210,255,0.25), rgba(232,180,255,0.12) 45%, transparent 75%)",
                 }}
               />
               <Image
                 src="/headshot.png"
                 alt="Ryan Le"
                 fill
-                sizes="(max-width: 768px) 80vw, 320px"
-                className="rounded-2xl object-cover ring-1 ring-white/10"
+                sizes="(max-width: 768px) 80vw, 300px"
+                className="rounded-2xl object-cover object-[50%_18%] ring-1 ring-white/10"
                 priority
               />
             </div>
+
+            <dl className="mt-6 space-y-3 border-t border-white/10 pt-6 text-sm">
+              {glance.map((row) => (
+                <div key={row.k} className="grid grid-cols-[84px_1fr] gap-3">
+                  <dt className="text-muted">{row.k}</dt>
+                  <dd className="text-foreground/85">{row.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </FadeIn>
+        </div>
+
+        <div>
+          <FadeIn delay={0.1}>
+            <div className="space-y-5 text-lg leading-relaxed text-muted">
+              <p>
+                I&apos;m a senior at{" "}
+                <span className="text-foreground">
+                  San Diego State University
+                </span>{" "}
+                studying Management Information Systems with a minor in Computer
+                Science, graduating May 2027. I work like a forward-deployed
+                engineer: I build the models and pipelines (neural networks,
+                natural language processing decision engines, time series
+                forecasting) and I sit with the non-technical teams who use them
+                to define requirements and architecture.
+              </p>
+              <p>
+                As a research assistant with SDSU&apos;s AI4Business group I study
+                the risks in LLM-generated code, work that became a co-authored
+                paper,{" "}
+                <span className="text-foreground">
+                  &ldquo;Failures at the Seam,&rdquo;
+                </span>{" "}
+                submitted to HICSS. Over summer 2026 I was an Applied Machine
+                Learning Intern at{" "}
+                <span className="text-foreground">Realty Income</span>, where I
+                built a market-sentiment scoring pipeline for commercial real
+                estate and helped shape an investment thesis presented to company
+                leadership.
+              </p>
+            </div>
           </FadeIn>
 
-          <div>
-            <FadeIn delay={0.15}>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] mb-6">
-                <span className="text-xs tracking-wide text-muted">
-                  AI4Business Research Assistant @ SDSU Research Foundation
-                </span>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <p className="text-lg text-muted leading-relaxed mb-6">
-                I&apos;m a senior at San Diego State University studying
-                Management Information Systems with a minor in Computer Science,
-                graduating in May 2027. My work sits between machine learning and
-                the teams that rely on it: I train neural networks and natural
-                language processing decision engines and build time series
-                forecasting pipelines, all with a focus on real-world
-                applicability. I work like a forward-deployed engineer, turning
-                technical systems into something a non-technical audience can act
-                on and partnering with them to define requirements and
-                architecture.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.3}>
-              <p className="text-lg text-muted leading-relaxed mb-6">
-                I work as an undergraduate research assistant, teaching
-                assistant, and lab coordinator with the AI4Business group at the
-                SDSU Research Foundation, studying the risks in LLM-generated
-                code and helping build HPC benchmarks. Over summer 2026 I was an
-                Applied Machine Learning Intern at{" "}
-                <span className="text-foreground font-medium">
-                  Realty Income
-                </span>
-                , where I built a market-sentiment scoring pipeline for
-                commercial real estate and helped shape an investment thesis
-                presented to company leadership.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.4}>
-              <p className="text-lg text-muted leading-relaxed mb-10">
-                That research became a co-authored paper, &ldquo;Failures at the
-                Seam,&rdquo; submitted to HICSS. Outside coursework I&apos;m
-                secretary of AI For All, a new student organization at SDSU, and
-                mentor with the Asian Pacific Student Alliance and Asian Business
-                Association.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.5}>
-              <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10">
-                <div>
+          <FadeIn delay={0.15}>
+            <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-white/10 pt-8 sm:grid-cols-4">
+              {stats.map((s) => (
+                <div key={s.label}>
                   <p className="text-chrome text-3xl font-semibold tabular-nums">
-                    <Counter target={3.8} decimals={1} />
+                    <Counter target={s.value} decimals={s.decimals} />
                   </p>
-                  <p className="text-sm text-muted mt-1">GPA</p>
+                  <p className="mt-1 text-sm text-muted">{s.label}</p>
                 </div>
-                <div>
-                  <p className="text-chrome text-3xl font-semibold">
-                    May &apos;27
-                  </p>
-                  <p className="text-sm text-muted mt-1">
-                    Expected Graduation
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
