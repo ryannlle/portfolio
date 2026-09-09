@@ -1,4 +1,5 @@
 import FadeIn from "./FadeIn";
+import SectionHeading from "./SectionHeading";
 
 const skillCategories = [
   {
@@ -67,14 +68,7 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-sm text-accent tracking-widest uppercase mb-4">
-            Skills
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-16">
-            Tools of the trade.
-          </h2>
-        </FadeIn>
+        <SectionHeading label="Skills" title="Tools of the trade." />
 
         <div className="grid md:grid-cols-2 gap-12">
           {skillCategories.map((cat, i) => (

@@ -10,7 +10,7 @@ export default function Hero() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(96,165,250,0.18) 0%, rgba(167,139,250,0.1) 35%, transparent 65%)",
+            "radial-gradient(circle, rgba(150,210,255,0.16) 0%, rgba(178,184,255,0.09) 35%, transparent 65%)",
         }}
         animate={{
           scale: [1, 1.12, 1],
@@ -26,7 +26,7 @@ export default function Hero() {
         className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(167,139,250,0.14) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(232,180,255,0.11) 0%, transparent 65%)",
         }}
         animate={{
           x: [0, 50, 0],
@@ -43,7 +43,7 @@ export default function Hero() {
         className="absolute bottom-1/4 right-1/5 w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(96,165,250,0.12) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(150,210,255,0.1) 0%, transparent 65%)",
         }}
         animate={{
           x: [0, -35, 0],
@@ -71,12 +71,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter bg-clip-text text-transparent"
+          className="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tighter bg-clip-text text-transparent"
           style={{
             backgroundImage:
-              "linear-gradient(90deg, #ffffff, #60a5fa, #a78bfa, #ffffff, #60a5fa)",
+              "linear-gradient(100deg, #ffffff, #dbe6f0, #9fb1c2, #ffffff, #cddff0)",
             backgroundSize: "300% 100%",
-            animation: "gradient-shift 6s ease infinite",
+            animation: "gradient-shift 7s ease infinite",
           }}
         >
           Ryan Le

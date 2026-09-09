@@ -34,7 +34,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-lg font-bold tracking-tight">
+        <a href="#" className="text-chrome text-lg font-semibold tracking-tight">
           RL
         </a>
 

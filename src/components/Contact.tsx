@@ -5,10 +5,10 @@ export default function Contact() {
     <section id="contact" className="py-24 md:py-32 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <FadeIn>
-          <p className="text-sm text-accent tracking-widest uppercase mb-4">
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-accent/90 mb-4">
             Contact
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          <h2 className="text-chrome text-4xl md:text-5xl font-semibold tracking-tight mb-6">
             Let&apos;s connect.
           </h2>
           <p className="text-lg text-muted max-w-md mx-auto mb-12">

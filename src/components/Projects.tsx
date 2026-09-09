@@ -1,4 +1,5 @@
 import FadeIn from "./FadeIn";
+import SectionHeading from "./SectionHeading";
 
 const featuredProject = {
   title: "Failures at the Seam",
@@ -143,9 +144,19 @@ function GlowCard({
   className?: string;
 }) {
   return (
-    <div className={`group relative rounded-2xl ${className}`}>
-      <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-accent/0 via-purple-500/0 to-accent/0 group-hover:from-accent/30 group-hover:via-purple-500/15 group-hover:to-accent/5 transition-all duration-500 blur-sm" />
-      <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-accent/0 via-purple-500/0 to-accent/0 group-hover:from-accent/15 group-hover:via-purple-500/10 group-hover:to-transparent transition-all duration-500" />
+    <div
+      className={`group relative rounded-2xl transition-transform duration-500 ease-out hover:-translate-y-1 ${className}`}
+    >
+      {/* cool halo, only on hover */}
+      <div
+        className="pointer-events-none absolute -inset-6 rounded-[2rem] opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(60% 55% at 50% 0%, rgba(150,210,255,0.10) 0%, transparent 70%)",
+        }}
+      />
+      {/* top sheen */}
+      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.07] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       {children}
     </div>
   );
@@ -155,22 +166,15 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-sm text-accent tracking-widest uppercase mb-4">
-            Projects
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-16">
-            What I&apos;ve built.
-          </h2>
-        </FadeIn>
+        <SectionHeading label="Projects" title="What I've built." />
 
         {/* Featured project */}
         <FadeIn>
           <GlowCard className="mb-5">
-            <div className="relative rounded-2xl bg-card p-8 border border-card-border group-hover:border-white/10 transition-colors duration-300">
+            <div className="relative rounded-2xl bg-card p-8 border border-card-border group-hover:border-white/20 transition-colors duration-300">
               <div className="flex items-start justify-between mb-1">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-accent/10 text-accent font-medium">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full border border-accent/25 text-accent font-medium">
                     Research Paper
                   </span>
                   <span className="text-xs text-muted">
@@ -184,7 +188,7 @@ export default function Projects() {
 
               <div className="mt-5 md:grid md:grid-cols-[1fr_auto] md:gap-12 md:items-start">
                 <div>
-                  <h3 className="text-2xl font-bold mb-1">
+                  <h3 className="text-chrome text-2xl font-semibold mb-1">
                     {featuredProject.title}
                   </h3>
                   <p className="text-sm text-accent/80 mb-4">
@@ -215,7 +219,7 @@ export default function Projects() {
           {projects.map((project, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <GlowCard className="h-full">
-                <div className="relative h-full flex flex-col rounded-2xl bg-card p-6 border border-card-border group-hover:border-white/10 transition-colors duration-300">
+                <div className="relative h-full flex flex-col rounded-2xl bg-card p-6 border border-card-border group-hover:border-white/20 transition-colors duration-300">
                   <div className="flex items-start justify-between mb-4">
                     <p className="text-xs text-muted">{project.period}</p>
                     {project.link && (
