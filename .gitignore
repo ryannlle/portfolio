@@ -38,6 +38,7 @@ yarn-error.log*
 
 # local tooling
 .claude
+.tmp-assets/
 
 # typescript
 *.tsbuildinfo
