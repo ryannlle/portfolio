@@ -122,9 +122,23 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="text-sm text-foreground"
+              className="inline-flex items-center gap-1.5 text-sm text-foreground"
             >
-              Résumé &nearr;
+              Résumé
+              <svg
+                aria-hidden
+                className="h-3 w-3 opacity-60"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M7 17L17 7M17 7H8M17 7v9"
+                />
+              </svg>
             </a>
           </div>
         </motion.div>
