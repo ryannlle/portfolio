@@ -1,23 +1,13 @@
 import Image from "next/image";
 import FadeIn from "./FadeIn";
-import Counter from "./Counter";
 import Section from "./Section";
 import SectionHeading from "./SectionHeading";
 
-const glance = [
-  { k: "Role", v: "AI4Business Research Assistant, SDSU" },
-  { k: "Focus", v: "Applied ML & decision systems" },
-  { k: "Based in", v: "San Diego & Irvine" },
-  { k: "Graduating", v: "May 2027" },
-  { k: "Open to", v: "Full-time roles starting Summer 2027" },
-  { k: "Community", v: "AI For All (Secretary), APSA & ABA mentor" },
-];
-
-const stats = [
-  { value: 3.8, decimals: 1, label: "GPA" },
-  { value: 2, decimals: 0, label: "Internships" },
-  { value: 1, decimals: 0, label: "Paper (HICSS)" },
-  { value: 5, decimals: 0, label: "Projects" },
+const facts = [
+  { label: "GPA", value: "3.8" },
+  { label: "Graduating", value: "May 2027" },
+  { label: "Based in", value: "San Diego & Irvine" },
+  { label: "Open to", value: "Full-time, Summer 2027" },
 ];
 
 export default function About() {
@@ -46,64 +36,58 @@ export default function About() {
                 priority
               />
             </div>
-
-            <dl className="mt-6 space-y-3 border-t border-white/10 pt-6 text-sm">
-              {glance.map((row) => (
-                <div key={row.k} className="grid grid-cols-[84px_1fr] gap-3">
-                  <dt className="text-muted">{row.k}</dt>
-                  <dd className="text-foreground/85">{row.v}</dd>
-                </div>
-              ))}
-            </dl>
           </FadeIn>
         </div>
 
-        <div>
-          <FadeIn delay={0.1}>
-            <div className="space-y-5 text-lg leading-relaxed text-muted">
-              <p>
-                I&apos;m a senior at{" "}
-                <span className="text-foreground">
-                  San Diego State University
-                </span>{" "}
-                studying Management Information Systems with a minor in Computer
-                Science, graduating May 2027. I work like a forward-deployed
-                engineer: I build the models and pipelines (neural networks,
-                natural language processing decision engines, time series
-                forecasting) and I sit with the non-technical teams who use them
-                to define requirements and architecture.
-              </p>
-              <p>
-                As a research assistant with SDSU&apos;s AI4Business group I study
-                the risks in LLM-generated code, work that became a co-authored
-                paper,{" "}
-                <span className="text-foreground">
-                  &ldquo;Failures at the Seam,&rdquo;
-                </span>{" "}
-                submitted to HICSS. Over summer 2026 I was an Applied Machine
-                Learning Intern at{" "}
-                <span className="text-foreground">Realty Income</span>, where I
-                built a market-sentiment scoring pipeline for commercial real
-                estate and helped shape an investment thesis presented to company
-                leadership.
-              </p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.15}>
-            <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-white/10 pt-8 sm:grid-cols-4">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <p className="text-chrome text-3xl font-semibold tabular-nums">
-                    <Counter target={s.value} decimals={s.decimals} />
-                  </p>
-                  <p className="mt-1 text-sm text-muted">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
+        <FadeIn delay={0.1}>
+          <div className="space-y-5 text-lg leading-relaxed text-muted">
+            <p>
+              I came into tech through{" "}
+              <span className="text-foreground">
+                Management Information Systems
+              </span>
+              , which is about matching technology to how a business actually
+              runs. My{" "}
+              <span className="text-foreground">Computer Science</span> minor and
+              coursework in machine learning, data structures, and databases gave
+              me the other half: building the system myself. Most of what I&apos;ve
+              made lives in that overlap, from a URL-classification neural network
+              to a commercial real estate scoring engine. I&apos;m aiming for
+              applied machine learning and data roles where the work is as much
+              about the people who use a model as the model itself.
+            </p>
+            <p>
+              As a research assistant with SDSU&apos;s AI4Business group I study
+              the risks in LLM-generated code, work that became a co-authored
+              paper,{" "}
+              <span className="text-foreground">
+                &ldquo;Failures at the Seam,&rdquo;
+              </span>{" "}
+              submitted to HICSS. Over summer 2026 I was an Applied Machine
+              Learning Intern at{" "}
+              <span className="text-foreground">Realty Income</span>, where I
+              built a market-sentiment scoring pipeline for commercial real
+              estate and helped shape an investment thesis presented to company
+              leadership.
+            </p>
+          </div>
+        </FadeIn>
       </div>
+
+      <FadeIn delay={0.15}>
+        <dl className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+          {facts.map((f) => (
+            <div key={f.label} className="bg-white/[0.02] px-5 py-6 sm:px-6">
+              <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                {f.label}
+              </dt>
+              <dd className="text-chrome mt-2 text-xl font-semibold tracking-tight">
+                {f.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </FadeIn>
     </Section>
   );
 }
