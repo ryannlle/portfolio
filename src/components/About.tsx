@@ -7,9 +7,9 @@ import SectionHeading from "./SectionHeading";
 const glance = [
   { k: "Role", v: "AI4Business Research Assistant, SDSU" },
   { k: "Focus", v: "Applied ML & decision systems" },
-  { k: "Based in", v: "San Diego & Irvine, CA (PT)" },
+  { k: "Based in", v: "San Diego & Irvine" },
   { k: "Graduating", v: "May 2027" },
-  { k: "Open to", v: "Summer 2027 roles" },
+  { k: "Open to", v: "Full-time roles starting Summer 2027" },
   { k: "Community", v: "AI For All (Secretary), APSA & ABA mentor" },
 ];
 

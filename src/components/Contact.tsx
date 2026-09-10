@@ -22,8 +22,8 @@ export default function Contact() {
             Let&apos;s connect.
           </h2>
           <p className="mb-8 text-lg text-muted">
-            Open to Summer 2027 roles in applied ML and data. Based in San Diego
-            &amp; Irvine, CA (PT).
+            Graduating May 2027 and open to full-time roles in applied ML and
+            data starting that summer. Based in San Diego &amp; Irvine.
           </p>
         </FadeIn>
 
