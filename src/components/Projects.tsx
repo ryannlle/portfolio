@@ -1,7 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import FadeIn from "./FadeIn";
 import Card from "./Card";
 import Section from "./Section";
 import SectionHeading from "./SectionHeading";
+
+// Featured card counts as one, so 4 here keeps the section at five projects
+// until the reader opts into the rest.
+const INITIAL_VISIBLE = 4;
 
 type Metric = { value: string; label: string };
 type Cta = { label: string; href: string };
@@ -160,6 +167,11 @@ function TagRow({ tags }: { tags: string[] }) {
 }
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const hiddenCount = projects.length - INITIAL_VISIBLE;
+  const visibleProjects =
+    showAll || hiddenCount <= 0 ? projects : projects.slice(0, INITIAL_VISIBLE);
+
   return (
     <Section id="projects" size="lg" panel divider>
       <SectionHeading label="Projects" title="What I've built." />
@@ -215,8 +227,8 @@ export default function Projects() {
 
       {/* Grid */}
       <div className="grid gap-5 md:grid-cols-2">
-        {projects.map((project, i) => (
-          <FadeIn key={i} delay={i * 0.05}>
+        {visibleProjects.map((project, i) => (
+          <FadeIn key={project.title} delay={Math.min(i, INITIAL_VISIBLE) * 0.05}>
             <Card className="p-6">
               <div className="mb-4 flex items-start justify-between gap-4">
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -266,6 +278,36 @@ export default function Projects() {
           </FadeIn>
         ))}
       </div>
+
+      {hiddenCount > 0 && (
+        <div className="mt-10 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setShowAll((v) => !v)}
+            aria-expanded={showAll}
+            aria-controls="projects"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm text-foreground transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
+          >
+            {showAll ? "Show less" : `Show ${hiddenCount} more`}
+            <svg
+              aria-hidden
+              className={`h-3.5 w-3.5 transition-transform duration-300 ${
+                showAll ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        </div>
+      )}
     </Section>
   );
 }
