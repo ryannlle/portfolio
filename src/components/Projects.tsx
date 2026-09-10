@@ -90,6 +90,7 @@ const projects: Project[] = [
       "A YOLOv8 model trained on 2,000 labeled image pairs for player detection and pose estimation, enabling dribble counting and in-game event recognition for SDSU Men’s Basketball.",
     tags: ["Python", "YOLOv8", "PyTorch", "Computer Vision", "Pose Estimation"],
     period: "Mar — Jul 2025",
+    repo: "https://github.com/ryannlle/SDSU_Basketball_AI_Project",
   },
   {
     title: "Movie Rental Dashboard",
@@ -258,7 +259,7 @@ export default function Projects() {
                   className="mt-5 inline-flex items-center gap-1.5 self-start text-sm text-accent transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
                 >
                   {project.cta.label}
-                  <span aria-hidden>&rarr;</span>
+                  <span aria-hidden>&#8594;</span>
                 </a>
               )}
             </Card>
