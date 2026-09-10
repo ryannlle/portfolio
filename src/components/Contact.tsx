@@ -5,7 +5,7 @@ import EmailCopy from "./EmailCopy";
 const RESUME_HREF = "/Ryan-Le-Resume.pdf";
 
 const links = [
-  { label: "Résumé", href: RESUME_HREF, external: true },
+  { label: "Resume", href: RESUME_HREF, external: true },
   { label: "LinkedIn", href: "https://linkedin.com/in/leryan2027", external: true },
   { label: "GitHub", href: "https://github.com/ryannlle", external: true },
 ];

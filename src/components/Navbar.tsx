@@ -35,14 +35,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a
-          href="#"
-          className="text-chrome text-lg font-semibold tracking-tight focus-visible:outline-none"
-        >
-          RL
-        </a>
-
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-end px-6">
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <a
@@ -57,20 +50,20 @@ export default function Navbar() {
             href={RESUME_HREF}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-3.5 py-1.5 text-sm text-foreground transition-colors hover:border-white/40 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
+            className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-4 py-1.5 text-sm font-medium text-background transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
           >
-            Résumé
+            Resume
             <svg
               className="h-3 w-3"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              strokeWidth={2}
+              strokeWidth={2.5}
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                d="M7 17L17 7M17 7H8M17 7v9"
               />
             </svg>
           </a>
@@ -122,12 +115,12 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="inline-flex items-center gap-1.5 text-sm text-foreground"
+              className="mt-1 inline-flex w-fit items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
             >
-              Résumé
+              Resume
               <svg
                 aria-hidden
-                className="h-3 w-3 opacity-60"
+                className="h-3 w-3"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
