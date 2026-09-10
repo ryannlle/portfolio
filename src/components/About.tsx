@@ -1,99 +1,93 @@
 import Image from "next/image";
 import FadeIn from "./FadeIn";
-import Counter from "./Counter";
+import Section from "./Section";
+import SectionHeading from "./SectionHeading";
+
+const facts = [
+  { label: "GPA", value: "3.8" },
+  { label: "Graduating", value: "May 2027" },
+  { label: "Based in", value: "San Diego & Irvine" },
+  { label: "Open to", value: "Full-time, Summer 2027" },
+];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-sm text-accent tracking-widest uppercase mb-4">
-            About
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-16">
-            A bit about me.
-          </h2>
-        </FadeIn>
+    <Section id="about" size="md" panel>
+      <SectionHeading label="About" title="A bit about me." />
 
-        <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-16 items-start">
-          <FadeIn delay={0.1}>
-            <div className="relative aspect-square w-full max-w-xs mx-auto md:mx-0">
-              <div className="absolute -inset-2 bg-gradient-to-br from-accent/20 to-purple-500/10 rounded-2xl blur-2xl" />
+      <div className="grid gap-12 md:grid-cols-[300px_1fr] md:gap-16">
+        <div className="md:sticky md:top-28 md:self-start">
+          <FadeIn delay={0.05}>
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[300px] md:mx-0">
+              <div
+                aria-hidden
+                className="absolute -inset-3 rounded-[1.25rem] blur-2xl"
+                style={{
+                  background:
+                    "radial-gradient(circle at 30% 15%, rgba(150,210,255,0.25), rgba(232,180,255,0.12) 45%, transparent 75%)",
+                }}
+              />
               <Image
                 src="/headshot.png"
                 alt="Ryan Le"
                 fill
-                sizes="(max-width: 768px) 80vw, 320px"
-                className="rounded-2xl object-cover"
+                sizes="(max-width: 768px) 80vw, 300px"
+                className="rounded-2xl object-cover object-[50%_18%] ring-1 ring-white/10"
                 priority
               />
             </div>
           </FadeIn>
-
-          <div>
-            <FadeIn delay={0.15}>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
-                </span>
-                <span className="text-xs text-muted">
-                  Incoming ML Intern @ Realty Income &middot; Summer 2026
-                </span>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <p className="text-lg text-muted leading-relaxed mb-6">
-                I&apos;m a junior at San Diego State University studying
-                Management Information Systems with a minor in Computer Science.
-                My work spans artificial intelligence, machine learning, and
-                data-driven systems&mdash;from training neural networks and
-                computer vision models to building time series forecasting
-                pipelines and multi-agent LLM frameworks.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.3}>
-              <p className="text-lg text-muted leading-relaxed mb-6">
-                Currently, I serve as an AI4Business Research Assistant at the
-                SDSU Research Foundation, where I contribute to research on LLM
-                hallucination detection and HPC benchmark development. This
-                summer, I&apos;ll be joining{" "}
-                <span className="text-foreground font-medium">
-                  Realty Income
-                </span>{" "}
-                as an Applied Machine Learning Intern.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.4}>
-              <p className="text-lg text-muted leading-relaxed mb-10">
-                I thrive in collaborative, leadership-oriented environments and
-                bring a distinct blend of business acumen and technical depth to
-                every project I take on.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.5}>
-              <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10">
-                <div>
-                  <p className="text-3xl font-bold tabular-nums">
-                    <Counter target={3.8} decimals={1} />
-                  </p>
-                  <p className="text-sm text-muted mt-1">GPA</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold">May &apos;27</p>
-                  <p className="text-sm text-muted mt-1">
-                    Expected Graduation
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
         </div>
+
+        <FadeIn delay={0.1}>
+          <div className="space-y-5 text-lg leading-relaxed text-muted">
+            <p>
+              I came into tech through{" "}
+              <span className="text-foreground">
+                Management Information Systems
+              </span>
+              , which is about matching technology to how a business actually
+              runs. My{" "}
+              <span className="text-foreground">Computer Science</span> minor and
+              coursework in machine learning, data structures, and databases gave
+              me the other half: building the system myself. Most of what I&apos;ve
+              made lives in that overlap, from a URL-classification neural network
+              to a commercial real estate scoring engine. I&apos;m aiming for
+              applied machine learning and data roles where the work is as much
+              about the people who use a model as the model itself.
+            </p>
+            <p>
+              As a research assistant with SDSU&apos;s AI4Business group I study
+              the risks in LLM-generated code, work that became a co-authored
+              paper,{" "}
+              <span className="text-foreground">
+                &ldquo;Failures at the Seam,&rdquo;
+              </span>{" "}
+              submitted to HICSS. Over summer 2026 I was an Applied Machine
+              Learning Intern at{" "}
+              <span className="text-foreground">Realty Income</span>, where I
+              built a market-sentiment scoring pipeline for commercial real
+              estate and helped shape an investment thesis presented to company
+              leadership.
+            </p>
+          </div>
+        </FadeIn>
       </div>
-    </section>
+
+      <FadeIn delay={0.15}>
+        <dl className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+          {facts.map((f) => (
+            <div key={f.label} className="bg-white/[0.02] px-5 py-6 sm:px-6">
+              <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                {f.label}
+              </dt>
+              <dd className="text-chrome mt-2 text-xl font-semibold tracking-tight">
+                {f.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </FadeIn>
+    </Section>
   );
 }

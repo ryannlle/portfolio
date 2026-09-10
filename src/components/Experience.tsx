@@ -1,29 +1,55 @@
 import FadeIn from "./FadeIn";
+import Section from "./Section";
+import SectionHeading from "./SectionHeading";
 
-const experiences = [
+type Experience = {
+  role: string;
+  company: string;
+  period: string;
+  type?: string;
+  description: string[];
+  link?: string;
+};
+
+const experiences: Experience[] = [
   {
-    role: "Applied Machine Learning Intern",
-    company: "Realty Income",
-    period: "Summer 2026",
-    type: "Incoming",
-    description: [],
-  },
-  {
-    role: "AI4Business Research Assistant & Lab Coordinator",
+    role: "AI4Business Research Assistant, Teaching Assistant & Lab Coordinator",
     company: "SDSU Research Foundation",
     period: "January 2026 — Present",
     type: "Current",
+    link: "https://business.sdsu.edu/centers-institutes/ai4business",
     description: [
+      "Co-authored “Failures at the Seam,” a socio-technical survey of LLM-generated code risks submitted to HICSS, leading the technical consequences section: bugs, API misuse, package hallucination and slopsquatting, insecure code, and performance issues, synthesized from peer-reviewed literature.",
       "Contributing to AgentCode and HPC-Eval, multi-agent LLM frameworks for detecting hallucinations in AI-generated code and benchmarking HPC coding tasks.",
       "Supporting lab operations through research paper reviews, sponsor outreach, conducting interviews, and drafting monthly newsletters.",
       "Grading and preparing course materials for 36 students across 2 sections of MIS515.",
     ],
   },
   {
+    role: "Secretary",
+    company: "AI For All, San Diego State University",
+    period: "August 2026 — Present",
+    link: "https://www.linkedin.com/company/sdsuaiforall/",
+    description: [
+      "Officer for a new AI-focused student organization at San Diego State.",
+    ],
+  },
+  {
+    role: "Applied Machine Learning Intern",
+    company: "Realty Income",
+    period: "June — August 2026",
+    link: "https://www.realtyincome.com/",
+    description: [
+      "Built a cross-functional view of Realty Income's triple-net lease model and used it to score and pitch an acquisition, weighing business risk, location risk, and fungibility to produce a risk-adjusted, asset-level IRR.",
+      "Identified electrical equipment manufacturing as a sale-leaseback investment thesis, backed by supply chain and data-center demand analysis, and presented it to company leadership.",
+      "Worked across the Predictive Analytics, Private Fund, and Portfolio Management teams to define the scoring methodology, feature variables, and deployment architecture for a new tenant and property risk assessment tool.",
+    ],
+  },
+  {
     role: "Business Data Solutions Architect Intern",
     company: "SWCA Environmental Consultants",
     period: "June — August 2025",
-    type: "",
+    link: "https://www.swca.com/",
     description: [
       "Trained SARIMAX time series models to forecast benefit hour trends using historical data, seasonality, and regional variables.",
       "Partnered with stakeholders across 4 business units to define requirements and track benchmarks in Microsoft Azure.",
@@ -32,52 +58,73 @@ const experiences = [
   },
 ];
 
+function ExternalGlyph() {
+  return (
+    <svg
+      className="h-3.5 w-3.5 shrink-0 opacity-30 transition-opacity duration-200 group-hover/row:opacity-80"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+      />
+    </svg>
+  );
+}
+
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        <FadeIn>
-          <p className="text-sm text-accent tracking-widest uppercase mb-4">
-            Experience
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-16">
-            Where I&apos;ve worked.
-          </h2>
-        </FadeIn>
+    <Section id="experience" size="md" divider>
+      <SectionHeading label="Experience" title="Where I've worked." />
 
-        <div className="space-y-0">
-          {experiences.map((exp, i) => (
-            <FadeIn key={i} delay={i * 0.1}>
-              <div className="group grid md:grid-cols-[200px_1fr] gap-4 md:gap-12 py-10 border-b border-white/5 first:pt-0 last:border-b-0">
-                <div className="text-sm text-muted">
-                  <p>{exp.period}</p>
-                  {exp.type && (
-                    <span className="inline-block mt-2 px-2.5 py-0.5 text-xs font-medium rounded-full bg-accent/10 text-accent">
-                      {exp.type}
-                    </span>
-                  )}
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold">{exp.role}</h3>
-                  <p className="text-muted mt-1">{exp.company}</p>
-                  {exp.description.length > 0 && (
-                    <ul className="mt-4 space-y-2">
-                      {exp.description.map((item, j) => (
-                        <li
-                          key={j}
-                          className="text-muted text-sm leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:bg-accent/50 before:rounded-full"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+      <div>
+        {experiences.map((exp, i) => (
+          <FadeIn key={i} delay={i * 0.06}>
+            <div
+              className="group/row -mx-4 grid gap-2 rounded-xl px-4 py-9 transition-colors duration-300 hover:bg-white/[0.02] md:grid-cols-[150px_1fr] md:gap-10 [&:not(:last-child)]:border-b [&:not(:last-child)]:border-white/5"
+            >
+              <div className="text-sm text-muted md:text-right">
+                <p>{exp.period}</p>
+                {exp.type && (
+                  <span className="mt-2 inline-block rounded-full border border-accent/25 px-2.5 py-0.5 text-xs font-medium text-accent">
+                    {exp.type}
+                  </span>
+                )}
               </div>
-            </FadeIn>
-          ))}
-        </div>
+              <div>
+                <h3 className="text-xl font-semibold tracking-tight">
+                  {exp.role}
+                </h3>
+                <a
+                  href={exp.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-flex items-center gap-1.5 text-muted transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+                >
+                  {exp.company}
+                  <ExternalGlyph />
+                </a>
+                {exp.description.length > 0 && (
+                  <ul className="mt-4 space-y-2">
+                    {exp.description.map((item, j) => (
+                      <li
+                        key={j}
+                        className="relative pl-4 text-sm leading-relaxed text-muted before:absolute before:left-0 before:top-[9px] before:h-1 before:w-1 before:rounded-full before:bg-accent/50"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </FadeIn>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
